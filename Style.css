@@ -1,0 +1,153 @@
+  /* fontet "Fraunces" blir brukt til headers/overskrifter */ 
+:root {
+    --bg: #E819DB;
+    --bobble-1: #FFF7A1;
+    --bobble-2: #A6FFD6;
+    --bobble-3: #FCDABB;
+    --text-1: #8001B2;
+    --text-2: #AD0023;
+    --text-3: #0008EB;
+    --gul: #E5FF00;
+}
+    /* Koden root blir brukt som en type global kodehvor man kan sette farger
+        og skrifttyper som du kan gjenbruke gjennom hele koden som variabler. KI lærte meg dette :D */
+
+* { 
+    box-sizing: border-box; 
+    letter-spacing: 0.2px;
+}
+
+    /* Jeg bruker border box slik at paddingen regnes innenfor bredden og høyden til elementet.
+        Da blir ikke noe innhold lagt på toppen, og å adde padding ødelegger ikke layoute og generelt letter spacing. */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--gul);
+    font-family: "Work Sans", sans-serif;
+}
+    /*min-height 100vh gjør slik at body blir altid minst like høy som skjermen og bruker variablen laget i rooten */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 18px 48px;
+    background: var(--gul);
+}
+    /*lager en flexbox med space-between som 
+    dytter logoen til venstre og linkene til høyre*/
+
+.navbar .logo {
+    font-family: "Fraunces", serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-3);
+}
+    /* her styres fonten og fargen til logoen, font størrelsen er 1.2x så stor som root size
+    og siden font fargen er en sterk rosa, så contraste det med navbaren bra. */
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+    /* navigation bar kor linksa ska være som blir på høyre side. */
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-3);
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+}
+    /* text decoration for å få vekk understreken på lenker, border radius og transitionf for å få
+    hoveringen til linkene til å flyte mye bedre. */
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    background: rgba(14, 2, 248, 0.182);
+    }
+    /* Nav-links hover for å hovere links til å vise hva de trøkker på
+    og focus-visible for folk som bruker tastaturet til å navigere */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 24px;
+}
+    /* main sentrerer alt vertikalt i midten i en flexbox*/
+
+h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 500, bold;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0 0 50px;
+    text-align: center;
+}
+    /* clamp gjør slik at headeren minst skal være 1.8rem (1.8x root font),
+     helst være 4vw som betyr 4% at skjermbredden og maks av 2.6rem (2.6x root front) og text align center for å sentrere teksten */
+
+.bobbler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1000px;
+}
+    /*flex-wrap gjør slik at hvis det ikke er plass til de tre boblene atme hverandre så plasserer de dem under hverandre
+      (fikk hjelp av KI til å lage formen av boblene BTW)*/
+
+.bobble-text {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0 14px 30px rgba(58, 43, 46, 0.12);
+}
+    /* border-radius 50% gjør slik at sirklene kan bli laget 
+    og i hver av sirklene så lages en egen flexbox for å sentrere teksten
+    og box shadow gir sirkelen skyggen for å gjøre den mykere.*/
+
+.bobble-text:nth-child(1) {background: var(--bobble-1);}
+.bobble-text:nth-child(1) p {color: var(--text-1);}
+.bobble-text:nth-child(1) h2 {color: var(--text-1);}
+
+.bobble-text:nth-child(2) {background: var(--bobble-2);}
+.bobble-text:nth-child(2) p {color: var(--text-2) }
+.bobble-text:nth-child(2) h2 {color: var(--text-2) }
+
+.bobble-text:nth-child(3) {background: var(--bobble-3);}
+.bobble-text:nth-child(3) p {color: var(--text-3) }
+.bobble-text:nth-child(3) h2 {color: var(--text-3) }
+    /*gir farger til de forskjellige boblene, og lager tre av de med forskjellige farger og tekst farger.*/
+
+.bobble-text h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 500, bold;
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+}
+    /*font og weight til headers i bobler*/
+
+.bobble-text p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+}
+    /*gir font size som er 0.9x så stor som root fonten og
+    størrelse på linje høyde */
+
+@media (max-width: 600px) {
+    .bobble-text { width: 220px; height: 220px; padding: 22px; }
+    }
+    /*gjør slik at sirklene blir mindre basert på skjermen slik at hvis den er malere*/
+
